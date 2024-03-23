@@ -45,4 +45,23 @@ public class DistributionTest {
         assert employees.get(3).getTotalLeadTime() <= 420;
         assert employees.get(4).getTotalLeadTime() <= 420;
     }
+
+    @Test
+    void distributeTest() {
+        List<EmployeeDTO> employees = dataGenerator.getEmployees();
+        List<TaskDTO> tasks = dataGenerator.getTasks();
+        taskDistributor.distribute(employees, tasks);
+
+        employees.forEach((e) -> {
+            System.out.println(e.getFio() + ' ' + e.getTotalLeadTime());
+            e.getTasks().forEach(t -> {
+                System.out.println("task name " + t.getName());
+                System.out.println("task priority " + t.getPriority());
+                System.out.println("task time " + t.getLeadTime());
+                System.out.println("---task---");
+            });
+            System.out.println("---employee---");
+        });
+
+    }
 }

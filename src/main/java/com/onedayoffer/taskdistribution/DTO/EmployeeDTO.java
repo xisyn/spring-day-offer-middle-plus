@@ -23,4 +23,8 @@ public class EmployeeDTO {
         if (tasks.size() == 0) return 0;
         else return tasks.stream().mapToInt(TaskDTO::getLeadTime).sum();
     }
+
+    public void setTask(TaskDTO task) {
+        tasks.add(task);
+    }
 }
